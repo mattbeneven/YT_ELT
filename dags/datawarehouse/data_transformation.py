@@ -28,9 +28,11 @@ def transform_data(row):
 
     duration_td = parse_duration(row['Duration'])
 
+    # updating 'Duration' column to give a readable value
     # datetime.min is the earliest possible datetime in python. This is used so that we can return in the form "HH:MM:SS"
     row['Duration'] = (datetime.min + duration_td).time()
 
+    # adding column Video_Type
     # defining Youtube Shorts as videos of duration 60 seconds or less. Anything else as a normal YT video
     row['Video_Type'] = "Shorts" if duration_td.total_seconds() <= 60 else "Normal"
 

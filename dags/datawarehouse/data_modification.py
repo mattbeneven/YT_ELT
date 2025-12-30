@@ -3,7 +3,15 @@ import logging
 logger = logging.getLogger(__name__)
 table = "yt_api"
 
-
+"""
+Inserts a single row into the yt_api table.
+    
+Parameters:
+    cur (cursor): psycopg2 database cursor
+    conn (connection): psycopg2 database connection
+    schema (str): target schema ("staging" or other)
+    row (dict): dictionary containing the row data
+"""
 def insert_rows(cur, conn, schema, row):
 
     try:
@@ -12,6 +20,10 @@ def insert_rows(cur, conn, schema, row):
 
             video_id = "video_id"
 
+            # Inserting into the named columns, retrieve values from the psycopg2 parameters of format %(key)s. 
+            # % - indicates it is a placeholder. 
+            # key - name of the key in the dictionary
+            # s - type specifier (string)
             cur.execute(
                 f"""
                 INSERT INTO {schema}.{table}("Video_ID", "Video_Title", "Upload_Date", "Duration", "Video_Views", "Likes_Count", "Comments_Count")
