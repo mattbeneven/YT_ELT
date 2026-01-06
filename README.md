@@ -99,5 +99,6 @@ Both unit and data quality testing are implemented in this project using pytest 
 
 ## CI/CD
 
-The CI/CD part of this project is needed for when you make a change the Airflow code, docker image, packages, etc and want to test that the DAGs are still working as expected. CI-CD is implemented using Github Actions.
+This project uses GitHub Actions to validate pipeline changes through automated testing and Docker image builds. Workflow runs ensure that DAG logic, dependencies, and data quality checks pass before changes are merged or deployed.
+
 
