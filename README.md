@@ -17,7 +17,7 @@ The project demonstrates workflow orchestration, containerized infrastructure, d
 
 ---
 
-## Dataset
+## Data Source
 
 The data source for this project is the **YouTube Data API**. By default, data is extracted from the **MrBeast** YouTube channel.
 
