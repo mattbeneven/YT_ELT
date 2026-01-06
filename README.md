@@ -71,17 +71,6 @@ Once the core schema is populated and all tests pass, the data is ready for anal
 
 ---
 
-### High-Level Data Flow
-
-YouTube API  
-→ Python Extraction  
-→ Raw JSON (Staging)  
-→ PostgreSQL (Staging → Core)  
-→ Data Quality Checks  
-→ Analytics-Ready Tables
-
----
-
 ## Containerization
 
 Airflow is deployed using Docker Compose, based on the official Airflow `docker-compose.yaml` with custom modifications.
