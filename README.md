@@ -34,6 +34,20 @@ This project can be easily adapted for any other YouTube channel by updating the
 
 ---
 
+## Extracted Fields
+
+The following fields are extracted from the YouTube API:
+
+- Video ID  
+- Video Title  
+- Upload Date  
+- Duration  
+- View Count  
+- Like Count  
+- Comment Count  
+
+---
+
 ## Pipeline Architecture
 
 This project uses **Apache Airflow** as the orchestration layer, running inside **Docker containers**, to manage an ELT workflow. The pipeline consists of the following steps:
@@ -65,20 +79,6 @@ YouTube API
 → PostgreSQL (Staging → Core)  
 → Data Quality Checks  
 → Analytics-Ready Tables
-
----
-
-## Extracted Fields
-
-The following fields are extracted from the YouTube API:
-
-- Video ID  
-- Video Title  
-- Upload Date  
-- Duration  
-- View Count  
-- Like Count  
-- Comment Count  
 
 ---
 
