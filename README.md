@@ -1,10 +1,19 @@
 # YouTube ELT Pipeline with Airflow, Docker, and CI/CD
 
-## Motivation
+## Overview
 
-The goal of this project is to gain hands-on experience with modern data engineering tools by building an end-to-end **ELT (Extract, Load, Transform)** pipeline. The project uses **Python, Docker, and Apache Airflow** to orchestrate data ingestion and processing, while incorporating **unit testing, data quality checks, and CI/CD best practices** to ensure reliability and maintainability.
+This project implements a production-style **end-to-end ELT data pipeline** using **Python, Apache Airflow, Docker, and PostgreSQL**. The pipeline ingests data from the YouTube Data API, stages raw data, applies transformations, and loads analytics-ready datasets with **automated testing and CI/CD validation**.
 
-This repository demonstrates a production-style data pipeline with automated testing and deployment workflows.
+The project demonstrates workflow orchestration, containerized infrastructure, data quality enforcement, and CI/CD best practices commonly used in modern data engineering teams.
+
+## Tools & Technologies
+
+- **Containerization**: Docker, Docker Compose  
+- **Orchestration**: Apache Airflow  
+- **Data Storage**: PostgreSQL  
+- **Languages**: Python, SQL  
+- **Testing**: pytest, SODA Core  
+- **CI/CD**: GitHub Actions
 
 ---
 
@@ -16,7 +25,7 @@ This project can be easily adapted for any other YouTube channel by updating the
 
 ---
 
-## Project Overview
+## Pipeline Architecture
 
 This project uses **Apache Airflow** as the orchestration layer, running inside **Docker containers**, to manage an ELT workflow. The pipeline consists of the following steps:
 
@@ -39,6 +48,17 @@ Once the core schema is populated and all tests pass, the data is ready for anal
 
 ---
 
+### High-Level Data Flow
+
+YouTube API  
+→ Python Extraction  
+→ Raw JSON (Staging)  
+→ PostgreSQL (Staging → Core)  
+→ Data Quality Checks  
+→ Analytics-Ready Tables
+
+---
+
 ## Extracted Fields
 
 The following fields are extracted from the YouTube API:
@@ -53,17 +73,6 @@ The following fields are extracted from the YouTube API:
 
 ---
 
-## Tools & Technologies
-
-- **Containerization**: Docker, Docker Compose  
-- **Orchestration**: Apache Airflow  
-- **Data Storage**: PostgreSQL  
-- **Languages**: Python, SQL  
-- **Testing**: pytest, SODA Core  
-- **CI/CD**: GitHub Actions  
-
----
-
 ## Containerization
 
 Airflow is deployed using Docker Compose, based on the official Airflow `docker-compose.yaml` with custom modifications.
@@ -72,12 +81,12 @@ Airflow is deployed using Docker Compose, based on the official Airflow `docker-
 - The image is pushed to and pulled from **Docker Hub** via GitHub Actions
 - Docker Compose is used to spin up all required services (Airflow components and PostgreSQL)
 
-## Orchestration
+## Orchestration (Airflow DAGs)
 
 Three DAGs exist, triggered one after the other. These can be accessed using the Airflow UI through http://localhost:8080. The DAGs are as follows:
 
 - produce_json - DAG to produce JSON file with raw data
-- update_db - DAG to process JSON file and insert data into booth staging and core schemas
+- update_db - DAG to process JSON file and insert data into both staging and core schemas
 - data_quality - DAG to check the data quality on both layers in the database
 
 ## Data Storage
@@ -86,9 +95,9 @@ To access the Youtube API data, you can either access the postgres docker contai
 
 ## Testing
 
-Both unit and data quality testing are implemented in this project using pystest and SODA core respectively.
+Both unit and data quality testing are implemented in this project using pytest and SODA core respectively.
 
-## CI-CD
+## CI/CD
 
-The CI-CD part of this project is needed for when you make a change the Airflow code, docker image, packages, etc and want to test that the DAGs are still working as expected. CI-CD is implemented using Github Actions.
+The CI/CD part of this project is needed for when you make a change the Airflow code, docker image, packages, etc and want to test that the DAGs are still working as expected. CI-CD is implemented using Github Actions.
 
