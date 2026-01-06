@@ -81,6 +81,8 @@ Airflow is deployed using Docker Compose, based on the official Airflow `docker-
 - The image is pushed to and pulled from **Docker Hub** via GitHub Actions
 - Docker Compose is used to spin up all required services (Airflow components and PostgreSQL)
 
+---
+
 ## Orchestration (Airflow DAGs)
 
 Three DAGs exist, triggered one after the other. These can be accessed using the Airflow UI through http://localhost:8080. The DAGs are as follows:
@@ -89,13 +91,19 @@ Three DAGs exist, triggered one after the other. These can be accessed using the
 - update_db - DAG to process JSON file and insert data into both staging and core schemas
 - data_quality - DAG to check the data quality on both layers in the database
 
+---
+
 ## Data Storage
 
 To access the Youtube API data, you can either access the postgres docker container and use psql to interact with the database or access a database management tool like Dbeaver and run your queries from there.
 
+---
+
 ## Testing
 
 Both unit and data quality testing are implemented in this project using pytest and SODA core respectively.
+
+---
 
 ## CI/CD
 
