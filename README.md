@@ -99,6 +99,4 @@ Both unit and data quality testing are implemented in this project using pytest 
 
 ## CI/CD
 
-This project uses GitHub Actions to validate pipeline changes through automated testing and Docker image builds. Workflow runs ensure that DAG logic, dependencies, and data quality checks pass before changes are merged or deployed.
-
-
+GitHub Actions is used to validate pipeline changes through automated testing and Docker image builds. The CI/CD workflow ensures that Airflow DAGs, dependencies, and data quality checks continue to function correctly as the codebase evolves.
