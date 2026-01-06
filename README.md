@@ -6,6 +6,15 @@ This project implements a production-style **end-to-end ELT data pipeline** usin
 
 The project demonstrates workflow orchestration, containerized infrastructure, data quality enforcement, and CI/CD best practices commonly used in modern data engineering teams.
 
+### Key Features
+- API-based data ingestion using Python
+- Airflow DAGs with task dependencies, retries, and failure handling
+- Staging and core schemas with incremental upserts
+- Automated unit tests and data quality checks
+- CI/CD workflows to validate pipeline changes
+
+---
+
 ## Tools & Technologies
 
 - **Containerization**: Docker, Docker Compose  
