@@ -91,7 +91,7 @@ Three DAGs exist, triggered one after the other. These can be accessed using the
 
 ---
 
-## Data Storage
+## Data Querying
 
 To access the Youtube API data, you can either access the postgres docker container and use psql to interact with the database or access a database management tool like Dbeaver and run your queries from there.
 
